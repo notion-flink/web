@@ -47,6 +47,7 @@ RUN adduser --system --uid 1001 nextjs
 
 RUN mkdir -p ./public/uploads
 RUN chown -R nextjs:nodejs ./public
+RUN chmod -R 775 ./public
 COPY --from=builder /app/public ./public
 
 # Set the correct permission for prerender cache
