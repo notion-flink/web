@@ -45,6 +45,8 @@ ENV NODE_ENV production
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
+RUN mkdir -p ./public/uploads
+RUN chown -R nextjs:nodejs ./public
 COPY --from=builder /app/public ./public
 
 # Set the correct permission for prerender cache
