@@ -3,8 +3,8 @@ import path from 'path';
 import mime from 'mime';
 import { NextResponse, type NextRequest } from "next/server"
 
-export async function GET(req: NextRequest, { params }: { params: { filename: string } }) {
-  const { filename } = params;
+export async function GET(req: NextRequest, { params }: { params: { filename: string[] } }) {
+  const filename = params.filename.join('/');
   const filePath = path.join(
     process.cwd(),
     "public",
