@@ -8,7 +8,6 @@ export function GET(req: NextRequest,{ params }: { params: { filename: string } 
   const filePath = path.join(
     process.cwd(),
     "public",
-    "uploads",
     filename
   )
   
