@@ -21,7 +21,7 @@ export async function GET(req: NextRequest, { params }: { params: { filename: st
       }
     });
   } catch (err) {
-    console.error("Error read file:", error);
+    console.error("Error read file:", err);
     return NextResponse.json({ message: "File not found" }, { status: 404 });
   }
 }
