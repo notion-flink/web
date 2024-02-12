@@ -14,6 +14,11 @@ export async function GET(req: NextRequest, { params }: { params: { filename: st
   try {
     const data = await fs.readFile(filePath);
     const contentType = mime.getType(filePath) || 'application/octet-stream';
+    
+    // Check if the content type is text-based, then adjust encoding
+    if (contentType.startsWith('text/') || contentType === 'application/json') {
+      content = content.toString('utf8');
+    }
     return new NextResponse(data, {
       status: 200,
       headers: {
