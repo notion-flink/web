@@ -12,7 +12,7 @@ export async function GET(req: NextRequest, { params }: { params: { filename: st
   );
 
   try {
-    let content = await fs.readFile(filePath);
+    let content:  Buffer | string = await fs.readFile(filePath);
     const contentType = mime.getType(filePath) || 'application/octet-stream';
     
     // Check if the content type is text-based, then adjust encoding
